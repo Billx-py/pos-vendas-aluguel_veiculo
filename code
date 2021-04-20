@@ -1,0 +1,317 @@
+#Sistema pós vendas para  Aluguel de veículos
+from tkinter import*
+import tkinter.messagebox as tkMessageBox
+import random
+import time;
+import datetime
+
+root=Tk()
+root.title("14° Aluguel de Carros :")
+root.geometry("1350x630+0+0")
+root.configure(bg='black')
+
+LeftmainFrame=Frame(root,width=1000,height=650,bg='lightblue',bd=8,relief="raise")
+LeftmainFrame.pack(side=LEFT)
+RightmainFrame=Frame(root,width=350,height=650,bd=8,relief="raise",bg='black')
+RightmainFrame.pack(side=RIGHT)
+#====================== Frame do Ttulo =================================================================================
+LeftmainFrame0=Frame(LeftmainFrame,width=0,height=0,bd=8,relief="raise",bg='black')
+LeftmainFrame0.pack(side=TOP)
+lblTitle=Label(LeftmainFrame0,font=('arial',60,'bold'),text='14° ALUGUEL DE CARROS',bd=8,bg='lightblue')
+lblTitle.grid(row=0,column=0,sticky=W)
+#========================== frame principal ============================================================================
+LeftmainFrame1=Frame(LeftmainFrame,width=1000,height=225,bd=8,relief="raise",bg='gray')
+LeftmainFrame1.pack(side=TOP)
+LeftmainFrame2=Frame(LeftmainFrame,width=1000,height=225,bd=8,bg='silver',relief="raise")
+LeftmainFrame2.pack(side=TOP)
+LeftmainFrame3=Frame(LeftmainFrame,width=1000,height=100,bd=8,relief="raise",bg='lightgray')
+LeftmainFrame3.pack(side=TOP)
+LeftmainFrame4=Frame(LeftmainFrame,width=1000,height=100,bd=8,relief="raise")
+LeftmainFrame4.pack(side=TOP)
+
+RightmainFrame1=Frame(RightmainFrame,width=0,height=0,bd=0,relief="raise",bg='lightskyblue')
+RightmainFrame1.pack(side=TOP)
+RightmainFrame2=Frame(RightmainFrame,width=225,height=850,bd=3,relief="raise")
+RightmainFrame2.pack(side=BOTTOM)
+#======================== CÁLCULOS ======================================================================================
+def CarRentalCost():
+total_dias1 = float(total_dias.get())
+desc_carro1 = float(desconto.get())
+valor_diaria1 = float(valor_diaria.get())
+
+RentalCost = ((total_dias1 * valor_diaria1)* desc_carro1)/100
+CostofRental = "R$", str('%.2f'%((total_dias1 * valor_diaria1)- RentalCost))
+total.set(CostofRental)
+ID = random.randint(51, 95)
+randomID = str (ID)
+clienteID.set("Cliente"+ randomID)
+Inv = random.randint(15, 112)
+#===================================== VARIÁVEIS =======================================================================
+Var1 = IntVar()
+Var2 = IntVar()
+Var3 = IntVar()
+Var4 = IntVar()
+Var5 = IntVar()
+Var6 = IntVar()
+Var7 = IntVar()
+Var8 = IntVar()
+clienteID = StringVar()
+valor_diaria = StringVar()
+desconto = StringVar()
+total_dias = StringVar()
+total = StringVar()
+recibo = StringVar()
+variavel = StringVar()
+tipo_motor = StringVar()
+estilo = StringVar()
+carro_ano = StringVar()
+classe_carro = StringVar()
+desc_carro = StringVar()
+kmd = StringVar()
+kma = StringVar()
+fab_carro = StringVar()
+modelo = StringVar()
+cor_carro = StringVar()
+fab_motor = StringVar()
+seguro = StringVar()
+numero_cpf = StringVar()
+complemento = StringVar()
+numero_cnh = StringVar()
+data_nasc = StringVar()
+estado = StringVar()
+numero_casa = StringVar()
+cep = StringVar()
+endereço = StringVar()
+nome_cliente = StringVar()
+numero_rg = StringVar()
+#================================== BOTÃO SAIR ===========================================================================
+def Exit():
+   result = tkMessageBox.askquestion("14° Aluguel de Carros :")
+   if result == 'yes' :
+       root.destroy()
+       return
+#=========================== Definição de Função Reset ===================================================================
+def Reset():
+   Var1 = IntVar(0)
+   Var2 = IntVar(0)
+   Var3 = IntVar(0)
+   Var4 = IntVar(0)
+   Var5 = IntVar(0)
+   Var6 = IntVar(0)
+   Var7 = IntVar(0)
+   Var8 = IntVar(0)
+   clienteID = StringVar("")
+   valor_diaria = StringVar("")
+   desconto = StringVar("")
+   total_dias = StringVar("")
+   total = StringVar("")
+   recibo = StringVar("")
+   variavel = StringVar("")
+   tipo_motor = StringVar("")
+   estilo = StringVar("")
+   carro_ano = StringVar("")
+   classe_carro = StringVar("")
+   desc_carro = StringVar("")
+   kmd = StringVar("")
+   kma = StringVar("")
+   fab_carro = StringVar("")
+   modelo = StringVar("")
+   cor_carro = StringVar("")
+   fab_motor = StringVar("")
+   seguro = StringVar()
+   numero_cpf = StringVar("")
+   complemento = StringVar("")
+   numero_cnh = StringVar("")
+   data_nasc = StringVar("")
+   estado = StringVar("")
+   numero_casa = StringVar("")
+   cep = StringVar()
+   endereço = StringVar("")
+   nome_cliente = StringVar("")
+   numero_rg = StringVar("")
+   txtReceipt.delete("1.0",END)
+#========================================================RECIBO=========================================================
+def Receipt():
+txtReceipt.delete("1.0",END)
+x = random.randint(108, 506)
+randomRef = str(x)
+recibo.set("RECIBO"+ randomRef)
+
+txtReceipt.insert(END,'RECIBO Ref:\t'+recibo.get()+'\n\nData:\t'+ variavel.get()+"\n\n")
+txtReceipt.insert(END, 'Cliente: \t'+clienteID.get()+ "\n\n")
+txtReceipt.insert(END, 'Valor Diária: \t\t'+valor_diaria.get()+ "\n\n")
+txtReceipt.insert(END, 'Total: \t'+total.get()+ "\n\n")
+#=====================================CAMPO DO RECIBO===================================================================
+txtReceipt=Text(RightmainFrame2,height=25,width=40,bd=3,bg='lemonchiffon',font=('arial',12,'bold'))
+txtReceipt.grid(row=0,column=0)
+variavel.set(time.strftime("%d/%m/%y"))
+#================================= FRAME INICIAL============================ ===========================================
+lblCustomer=Label(LeftmainFrame1,font=('arial',11,'bold'),text='NOME-CLIENTE  :',bd=8,bg='gray')
+lblCustomer.grid(row=0,column=0,sticky=W)
+txtCustomer=Entry(LeftmainFrame1,font=('arial',10,'bold'),bd=2,textvariable=nome_cliente,
+                  width=31,justify='left')
+txtCustomer.grid(row=0,column=1)
+
+lblTitle=Label(LeftmainFrame1,font=('arial',11,'bold'),text='ENDEREÇO   :',bd=8,bg='gray')
+lblTitle.grid(row=0,column=2,sticky=W)
+txtTitle=Entry(LeftmainFrame1,font=('arial',10,'bold'),bd=2,textvariable=endereço,
+                  width=31,justify='left')
+txtTitle.grid(row=0,column=3)
+
+lblFirstname=Label(LeftmainFrame1,font=('arial',11,'bold'),text='CEP   :',bd=8,bg='gray')
+lblFirstname.grid(row=0,column=4,sticky=W)
+txtFirstname=Entry(LeftmainFrame1,font=('arial',10,'bold'),bd=2,textvariable=cep,
+                  width=31,justify='left')
+txtFirstname.grid(row=0,column=5)
+
+lblSurname=Label(LeftmainFrame1,font=('arial',11,'bold'),text='UF :',bd=8,bg='gray')
+lblSurname.grid(row=1,column=0,sticky=W)
+txtSurname=Entry(LeftmainFrame1,font=('arial',10,'bold'),bd=2,textvariable=estado,
+                  width=31,justify='left')
+txtSurname.grid(row=1,column=1)
+
+lblStreet=Label(LeftmainFrame1,font=('arial',11,'bold'),text='NUMERO-CASA  :',bd=8,bg='gray')
+lblStreet.grid(row=1,column=2,sticky=W)
+txtStreet=Entry(LeftmainFrame1,font=('arial',10,'bold'),bd=2,textvariable=numero_casa,
+                  width=31,justify='left')
+txtStreet.grid(row=1,column=3)
+
+lblArea=Label(LeftmainFrame1,font=('arial',11,'bold'),text='N-CPF   :',bd=8,bg='gray')
+lblArea.grid(row=1,column=4,sticky=W)
+txtArea=Entry(LeftmainFrame1,font=('arial',10,'bold'),bd=2,textvariable=numero_cpf,
+                  width=31,justify='left')
+txtArea.grid(row=1,column=5)
+
+lblPostCode=Label(LeftmainFrame1,font=('arial',11,'bold'),text='N-RG  :',bd=8,bg='gray')
+lblPostCode.grid(row=2,column=0,sticky=W)
+txtPostCode=Entry(LeftmainFrame1,font=('arial',10,'bold'),bd=2,textvariable=numero_rg,
+                  width=31,justify='left')
+txtPostCode.grid(row=2,column=1)
+
+lblLicenceNo=Label(LeftmainFrame1,font=('arial',11,'bold'),text='DATA-NASC.   :',bd=8,bg='gray')
+lblLicenceNo.grid(row=2,column=2,sticky=W)
+txtLicenceNo=Entry(LeftmainFrame1,font=('arial',10,'bold'),bd=2,textvariable=data_nasc,
+                  width=31,justify='left')
+txtLicenceNo.grid(row=2,column=3)
+
+lblIssueDate=Label(LeftmainFrame1,font=('arial',11,'bold'),text='N-CNH  :',bd=8,bg='gray')
+lblIssueDate.grid(row=2,column=4,sticky=W)
+txtIssueDate=Entry(LeftmainFrame1,font=('arial',10,'bold'),bd=2,textvariable=numero_cnh,
+                  width=31,justify='left')
+txtIssueDate.grid(row=2,column=5)
+
+lblIssueBy=Label(LeftmainFrame1,font=('arial',11,'bold'),text='COMPLEMENTO :',bd=8,bg='gray')
+lblIssueBy.grid(row=3,column=0,sticky=W)
+txtIssueBy=Entry(LeftmainFrame1,font=('arial',10,'bold'),bd=2,textvariable=complemento,
+                  width=31,justify='left')
+txtIssueBy.grid(row=3,column=1)
+#=================================FRAME SECUNDÁRIO======================================================================
+lblEngineSize=Label(LeftmainFrame2,font=('arial',11,'bold'),text='Tipo Motor:',bd=8,bg='silver')
+lblEngineSize.grid(row=0,column=0,sticky=W)
+txtEngineSize=Entry(LeftmainFrame2,font=('arial',10,'bold'),bd=2,textvariable=tipo_motor,
+                  width=31,justify='left')
+txtEngineSize.grid(row=0,column=1)
+
+lblStyle=Label(LeftmainFrame2,font=('arial',11,'bold'),text='Estilo:',bd=8,bg='silver')
+lblStyle.grid(row=0,column=2,sticky=W)
+txtStyle=Entry(LeftmainFrame2,font=('arial',10,'bold'),bd=2,textvariable=estilo,
+                  width=31,justify='left')
+txtStyle.grid(row=0,column=3)
+
+lblRegisteredYear=Label(LeftmainFrame2,font=('arial',11,'bold'),text='Carro-Ano:',bd=8,bg='silver')
+lblRegisteredYear.grid(row=0,column=4,sticky=W)
+txtRegisteredYear=Entry(LeftmainFrame2,font=('arial',10,'bold'),bd=2,textvariable=carro_ano,
+                  width=31,justify='left')
+txtRegisteredYear.grid(row=0,column=5)
+
+lblClassID=Label(LeftmainFrame2,font=('arial',11,'bold'),text='Classe-Carro:',bd=8,bg='silver')
+lblClassID.grid(row=1,column=0,sticky=W)
+txtClassID=Entry(LeftmainFrame2,font=('arial',10,'bold'),bd=2,textvariable=classe_carro,
+                  width=31,justify='left')
+txtClassID.grid(row=1,column=1)
+
+lblCarDescription=Label(LeftmainFrame2,font=('arial',11,'bold'),text='Desc-Carro:',bd=8,bg='silver')
+lblCarDescription.grid(row=1,column=2,sticky=W)
+txtCarDescription=Entry(LeftmainFrame2,font=('arial',10,'bold'),bd=2,textvariable=desc_carro,
+                  width=31,justify='left')
+txtCarDescription.grid(row=1,column=3)
+
+lblMilesBefore=Label(LeftmainFrame2,font=('arial',11,'bold'),text='Km-Anterior:',bd=8,bg='silver')
+lblMilesBefore.grid(row=1,column=4,sticky=W)
+txtMilesBefore=Entry(LeftmainFrame2,font=('arial',10,'bold'),bd=2,textvariable=kma,
+                  width=31,justify='left')
+txtMilesBefore.grid(row=1,column=5)
+
+lblMilesAfter=Label(LeftmainFrame2,font=('arial',11,'bold'),text='Km-Entrega:',bd=8,bg='silver')
+lblMilesAfter.grid(row=2,column=0,sticky=W)
+txtMilesAfter=Entry(LeftmainFrame2,font=('arial',10,'bold'),bd=2,textvariable=kmd,
+                  width=31,justify='left')
+txtMilesAfter.grid(row=2,column=1)
+
+lblMake=Label(LeftmainFrame2,font=('arial',11,'bold'),text='Fab-Carro:',bd=8,bg='silver')
+lblMake.grid(row=2,column=2,sticky=W)
+txtMake=Entry(LeftmainFrame2,font=('arial',10,'bold'),bd=2,textvariable=fab_carro,
+                  width=31,justify='left')
+txtMake.grid(row=2,column=3)
+
+lblModel=Label(LeftmainFrame2,font=('arial',11,'bold'),text='Modelo:',bd=8,bg='silver')
+lblModel.grid(row=2,column=4,sticky=W)
+txtModel=Entry(LeftmainFrame2,font=('arial',10,'bold'),bd=2,textvariable=modelo,
+                  width=31,justify='left')
+txtModel.grid(row=2,column=5)
+
+lblEngineMake=Label(LeftmainFrame2,font=('arial',11,'bold'),text='Fab-Motor:',bd=8,bg='silver')
+lblEngineMake.grid(row=3,column=0,sticky=W)
+txtEngineMake=Entry(LeftmainFrame2,font=('arial',10,'bold'),bd=2,textvariable=fab_motor,
+                  width=31,justify='left')
+txtEngineMake.grid(row=3,column=1)
+
+lblCarColor=Label(LeftmainFrame2,font=('arial',11,'bold'),text='Cor-Carro:',bd=8,bg='silver')
+lblCarColor.grid(row=3,column=2,sticky=W)
+txtCarColor=Entry(LeftmainFrame2,font=('arial',10,'bold'),bd=2,textvariable=cor_carro,
+                  width=31,justify='left')
+txtCarColor.grid(row=3,column=3)
+
+lblCarInsurance=Label(LeftmainFrame2,font=('arial',11,'bold'),text='Seguro-Carro:',bd=8,bg='silver')
+lblCarInsurance.grid(row=3,column=4,sticky=W)
+txtCarInsurance=Entry(LeftmainFrame2,font=('arial',10,'bold'),bd=2,textvariable=seguro,
+                  width=31,justify='left')
+txtCarInsurance.grid(row=3,column=5)
+#================================= FRAME TERCEIRO ======================================================================
+lblDaysRented=Label(LeftmainFrame3,font=('arial',11,'bold'),text='Valor-Diária :',bd=8,bg='lightgray')
+lblDaysRented.grid(row=0,column=0,sticky=W)
+txtDaysRented=Entry(LeftmainFrame3,font=('arial',10,'bold'),bd=2,textvariable=valor_diaria,
+                  width=31,justify='left')
+txtDaysRented.grid(row=0,column=1)
+
+lblDiscount=Label(LeftmainFrame3,font=('arial',11,'bold'),text='Desconto :',bd=8,bg='lightgray')
+lblDiscount.grid(row=0,column=4,sticky=W)
+txtDiscount=Entry(LeftmainFrame3,font=('arial',10,'bold'),bd=2,textvariable=desconto,
+                  width=31,justify='left')
+txtDiscount.grid(row=0,column=5)
+
+lblNumberofDays=Label(LeftmainFrame3,font=('arial',11,'bold'),text='Total-Dias :',bd=8,bg='lightgray')
+lblNumberofDays.grid(row=1,column=0,sticky=W)
+txtNumberofDays=Entry(LeftmainFrame3,font=('arial',10,'bold'),bd=2,textvariable=total_dias,
+                  width=31,justify='left')
+txtNumberofDays.grid(row=1,column=1)
+
+lblTotal=Label(LeftmainFrame3,font=('arial',11,'bold'),text='Total  :',bd=8,bg='lightgray')
+lblTotal.grid(row=1,column=4,sticky=W)
+txtTotal=Entry(LeftmainFrame3,font=('arial',10,'bold'),bd=2,textvariable=total,
+                  width=31,justify='left')
+txtTotal.grid(row=1,column=5)
+#=============================== BOTÕES ================================================================================
+btnTotal=Button(LeftmainFrame4,text='TOTAL',padx=6,bd=3,fg='yellow',bg='black',
+               font=('arial',10,'bold'),width=22,height=2,command=CarRentalCost).grid(row=0,column=0)
+
+btnReceipt=Button(LeftmainFrame4,text='Recibo',padx=6,bd=3,fg='yellow',bg='black',
+               font=('arial',10,'bold'),width=22,height=2,command=Receipt).grid(row=0,column=2)
+
+btnReset=Button(LeftmainFrame4,text='Limpar',padx=6,bd=3,fg='yellow',bg='black',
+               font=('arial',10,'bold'),width=22,height=2,command=Reset).grid(row=0,column=3)
+
+btnExit=Button(LeftmainFrame4,text='Sair',padx=6,bd=3,fg='yellow',bg='black',
+               font=('arial',10,'bold'),width=22,height=2,command=Exit).grid(row=0,column=4)
+#================================= Saída do Sistema ====================================================================
+root.mainloop()
